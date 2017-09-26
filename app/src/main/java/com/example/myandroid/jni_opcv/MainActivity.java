@@ -68,3 +68,46 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 }
+/*
+    @Override
+    public void onPreviewFrame(byte[] arg0, Camera arg1)
+    {
+
+       // At preview mode, the frame data will push to here.
+       if (imageFormat == ImageFormat.NV21)
+           {
+          //We only accept the NV21(YUV420) format.
+          if ( !bProcessing )
+          {
+             FrameData = arg0;
+             mHandler.post(DoImageProcessing);
+          }
+           }
+
+    }
+	//
+	// Native JNI
+	//
+    public native boolean ImageProcessing(int width, int height,
+    		byte[] NV21FrameData, int [] pixels);
+    static
+    {
+        System.loadLibrary("ImageProcessing");
+    }
+
+    private Runnable DoImageProcessing = new Runnable()
+    {
+        public void run()
+        {
+
+    		Log.i("MyRealTimeImageProcessing", "DoImageProcessing():");
+        	bProcessing = true;
+			ImageProcessing(PreviewSizeWidth, PreviewSizeHeight, FrameData, pixels);
+
+			bitmap.setPixels(pixels, 0, PreviewSizeWidth, 0, 0, PreviewSizeWidth, PreviewSizeHeight);
+			MyCameraPreview.setImageBitmap(bitmap);
+			bProcessing = false;
+
+        }
+    };
+ */
