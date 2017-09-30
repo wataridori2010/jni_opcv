@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         System.loadLibrary("native-lib");
     }
 
+    private TextView tv;
+
     private Sensor mGyro;
     private TextView values;
     private SensorManager manager;
@@ -30,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        tv = (TextView) findViewById(R.id.sample_text);
+        //tv.setText(stringFromJNI());
 
         values = (TextView)findViewById(R.id.gyro_text);
         values.setText("start2");
@@ -44,8 +46,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
+     * @param i
      */
-    public native String stringFromJNI();
+    public native String stringFromJNI(int i);
 
 
     @Override
@@ -65,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         values.setText(str);
         //}
+
+        tv.setText(stringFromJNI(1));
     }
 
 }
